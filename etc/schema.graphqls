@@ -1,0 +1,42 @@
+# Siteation - https://siteation.dev/
+# Copyright © Siteation. All rights reserved.
+# See LICENSE file for details.
+
+type StoreConfig {
+    store_information: StoreInformation @resolver(class: "Siteation\\StoreInfo\\Model\\Resolver\\StoreInformation") @doc(description: "Store information: General > Store Information plus the Siteation StoreInfo fields (socials, opening hours, notice), for the current store.")
+}
+
+type StoreInformation @doc(description: "Contact and company details of the current store.") {
+    name: String @doc(description: "Store name.")
+    phone: String @doc(description: "Phone number.")
+    extra_phone: String @doc(description: "Second phone number.")
+    whatsapp: String @doc(description: "WhatsApp number.")
+    email: String @doc(description: "General contact e-mail address.")
+    sales_email: String @doc(description: "Sales e-mail address.")
+    support_email: String @doc(description: "Customer support e-mail address.")
+    street_line1: String @doc(description: "Street address line 1.")
+    street_line2: String @doc(description: "Street address line 2.")
+    postcode: String @doc(description: "Postal code.")
+    city: String @doc(description: "City.")
+    region: String @doc(description: "Region name.")
+    country_id: String @doc(description: "Two-letter country code.")
+    country: String @doc(description: "Country name.")
+    vat_number: String @doc(description: "VAT number.")
+    coc_number: String @doc(description: "Chamber of commerce number.")
+    iban_number: String @doc(description: "IBAN.")
+    hours: String @doc(description: "General opening hours text.")
+    opening_hours: [StoreOpeningHours] @doc(description: "Opening hours per day, empty when the feature is disabled.")
+    notice: String @doc(description: "Store notice, empty when disabled.")
+    socials: [StoreSocial] @doc(description: "Configured social profiles.")
+}
+
+type StoreOpeningHours {
+    day: String @doc(description: "Day code: Mo, Tu, We, Th, Fr, Sa, Su.")
+    hours: String @doc(description: "Opening hours for that day.")
+}
+
+type StoreSocial {
+    type: String @doc(description: "Network key, e.g. instagram.")
+    title: String @doc(description: "Network label, e.g. Instagram.")
+    link: String @doc(description: "Profile URL.")
+}

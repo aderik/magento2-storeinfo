@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo/compare/4.0.2...main
 
+### Added
+
+- GraphQL: `storeConfig.store_information` exposes the store information, e-mail addresses,
+  opening hours, notice and socials for headless storefronts (`etc/schema.graphqls`,
+  `Model/Resolver/StoreInformation`). Only active when Magento's GraphQL modules are enabled.
+
 ### Changed
 
 - Store notices are now disabled by default [#12](https://github.com/Siteation/magento2-storeinfo/pull/12).

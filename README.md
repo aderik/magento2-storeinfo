@@ -137,6 +137,26 @@ $storeInfo->getStoreInfo('postcode'); // 'general/store_information/%s'
 $storeInfo->getStoreEmail('email', 'ident_sales'); // 'trans_email/%2$s/%1$s'
 ```
 
+## GraphQL (headless storefronts)
+
+With Magento's GraphQL modules enabled, the same values are available on `storeConfig`
+for the current store view:
+
+```graphql
+{
+  storeConfig {
+    store_information {
+      name phone email city coc_number
+      opening_hours { day hours }
+      socials { type title link }
+    }
+  }
+}
+```
+
+See `etc/schema.graphqls` for all fields. `opening_hours` and `notice` are empty when those
+features are disabled; `socials` lists only configured profiles.
+
 ## More StoreInfo Modules
 
 Interested in what this module does?
